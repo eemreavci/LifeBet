@@ -1,0 +1,26 @@
+.shadowed {
+  -webkit-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
+  -moz-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
+  box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52); }
+
+.top-find-friend {
+  text-align: center; }
+
+.find-friend {
+  margin-left: 1em;
+  display: inline-block; }
+  .find-friend .fa {
+    color: #fdf1f3;
+    vertical-align: middle; }
+
+.search {
+  background-color: #483d54; }
+
+.facebook {
+  background-color: #425f9c; }
+
+.twitter {
+  background-color: #00b0ed; }
+
+.foursquare {
+  background-color: #25b2ed; }

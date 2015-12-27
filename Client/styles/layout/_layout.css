@@ -1,0 +1,171 @@
+.shadowed {
+  -webkit-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
+  -moz-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
+  box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52); }
+
+.navbar-main {
+  height: inherit;
+  float: left;
+  width: 65.7%;
+  display: inline; }
+  .navbar-main ul {
+    margin: 0; }
+  .navbar-main li {
+    display: inline;
+    padding-left: 1%; }
+
+.navbar-left {
+  height: inherit;
+  width: 20%;
+  display: inline;
+  float: left; }
+
+.navbar-line {
+  height: inherit;
+  width: 0.3%;
+  display: inline;
+  float: left; }
+
+.navbar-user {
+  display: inline;
+  height: inherit;
+  float: right;
+  width: 14%; }
+
+.navbar-user-name {
+  position: relative;
+  top: -7em; }
+
+.navbar-logout {
+  position: relative;
+  top: -14em;
+  left: 1.8em; }
+
+.top-info-bar {
+  height: 2.5em;
+  width: 95%;
+  margin-top: 10em;
+  padding-top: 1em;
+  padding-left: 5%;
+  display: inline-block; }
+
+.new-bet {
+  height: 1.5em;
+  width: 1.5em;
+  margin-top: .5em;
+  margin-left: 50%; }
+
+.left-filter {
+  width: 20%;
+  height: 700px;
+  margin-top: 1em;
+  display: inline-block; }
+
+.filter-item {
+  margin: 1em;
+  height: 2em;
+  width: 91%;
+  padding-top: .5em;
+  padding-left: .5em;
+  border-radius: .7em; }
+
+.main-content {
+  width: 79%;
+  height: 700px;
+  margin-top: 1em;
+  float: right;
+  display: inline-block; }
+
+.bet-post {
+  height: auto;
+  width: auto; }
+
+.bet-post-main {
+  width: 100%;
+  height: auto;
+  float: right; }
+
+.bet-post-top-bar {
+  height: 2em;
+  padding-right: .5em;
+  padding-top: .5em; }
+
+.bet-post-info-bar {
+  width: 100%;
+  height: 5em; }
+
+.bet-post-content {
+  width: auto;
+  height: auto;
+  padding-top: .5em;
+  padding-bottom: 1em;
+  padding-left: 1em; }
+
+.bet-post-footer {
+  float: right;
+  padding: .5em; }
+
+.bet-post-owner-picture, .bet-comment-owner-picture {
+  height: 4em;
+  width: 4em;
+  border-radius: 50%;
+  margin-top: 1em;
+  margin-left: 1em;
+  display: inline-block; }
+
+.bet-post-owner-name, .bet-comment-owner-name {
+  display: inline-block;
+  position: relative;
+  top: -1.5em;
+  left: .5em; }
+
+.bet-post-diamond-count {
+  display: inline-block;
+  position: relative;
+  top: -1.5em;
+  left: 9em; }
+
+.bet-post-up-vote, .bet-post-down-vote {
+  position: relative;
+  top: 2em;
+  left: -1em;
+  margin-left: .5em;
+  float: right;
+  color: #45933e;
+  display: inline-block; }
+
+.bet-post-down-vote {
+  color: #ea1818; }
+
+.bet-comments {
+  margin-left: 1.5em;
+  display: inline-block;
+  width: 97.7%; }
+
+.bet-comment {
+  margin-top: .4em;
+  padding-left: 1em;
+  padding-bottom: 1.5em;
+  -webkit-border-bottom-left-radius: 2em;
+  border-bottom-left-radius: 2em;
+  background-clip: padding-box;
+  /* stops bg color from leaking outside the border: */ }
+
+.bet-comment-owner-name {
+  top: -0.7em;
+  left: .2em; }
+
+.bet-comment-owner-picture {
+  height: 2em;
+  width: 2em;
+  margin-left: 0em; }
+
+.bet-comment-content {
+  padding-left: 2.8em; }
+
+.post-comment {
+  margin-left: 5em;
+  margin-top: .2em; }
+  .post-comment input {
+    width: 99.6%;
+    font-size: .7em; }

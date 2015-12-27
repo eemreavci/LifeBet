@@ -1,0 +1,47 @@
+$color-main: #483d54;
+$color-secondary: #c83a5d;
+$color-light: #fdf1f3;
+$color-shadow: #181212;
+$color-green: #45933e;
+$color-red: #ea1818;
+$color-gray: rgba(24, 18, 18, 0.52);
+
+$nav-height: 5em;
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+    @if $inset {
+        -webkit-box-shadow: inset $top $left $blur $color;
+        -moz-box-shadow: inset $top $left $blur $color;
+        box-shadow: inset $top $left $blur $color;
+    }
+    @else {
+        -webkit-box-shadow: $top $left $blur $color;
+        -moz-box-shadow: $top $left $blur $color;
+        box-shadow: $top $left $blur $color;
+    }
+}
+
+@mixin border-radius($top-left: 0px, $top-right: 0px, $bottom-left: 0px, $bottom-right: 0px) {
+    @if $top-left != 0px {
+        -webkit-border-top-left-radius: $top-left;
+        border-top-left-radius: $top-left;
+    }
+    @if $top-right != 0px {
+        -webkit-border-top-right-radius: $top-right;
+        border-top-right-radius: $top-right;
+    }
+    @if $bottom-left != 0px {
+        -webkit-border-bottom-left-radius: $bottom-left;
+        border-bottom-left-radius: $bottom-left;
+    }
+    @if $bottom-right != 0px {
+        -webkit-border-bottom-right-radius: $bottom-right;
+        border-bottom-right-radius: $bottom-right;
+    }
+    background-clip: padding-box;
+    /* stops bg color from leaking outside the border: */
+}
+
+.shadowed {
+    @include box-shadow(3px, 4px, 5px, rgba(24, 18, 18, 0.52));
+}

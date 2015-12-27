@@ -1,0 +1,51 @@
+@import "config";
+
+.top-info-bar {
+    font-weight: 400;
+    font-size: .8em;
+}
+
+.new-bet {
+    font-weight: 400;
+    font-size: 2.5em;
+    text-align: center;
+}
+
+.navbar-main {
+    text-align: center;
+    font-weight: 500;
+}
+
+.navbar-user {
+    font-size: .6em;
+    color: $color-light;
+}
+
+.filter-item {
+    text-align: left;
+    font-size: .8em;
+}
+
+.bet-post-top-bar {
+    text-align: right;
+    font-size: .6em;
+    color: $color-light;
+}
+
+.bet-post-info-bar {
+    color: $color-main;
+}
+
+.bet-post-content {
+    color: $color-main;
+    font-size: .9em;
+}
+
+.bet-post-footer {
+    color: $color-secondary;
+    font-size: .6em;
+}
+
+.bet-comment-content {
+    font-size: .9em;
+}

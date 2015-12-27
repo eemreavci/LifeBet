@@ -1,0 +1,4 @@
+.shadowed {
+  -webkit-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
+  -moz-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
+  box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52); }

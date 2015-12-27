@@ -1,0 +1,30 @@
+@import "../base/config";
+
+.top-find-friend {
+    text-align: center;
+}
+
+.find-friend {
+    margin-left: 1em;
+    display: inline-block;
+    .fa {
+        color: $color-light;
+        vertical-align: middle;
+    }
+}
+
+.search {
+    background-color: $color-main;
+}
+
+.facebook {
+    background-color: #425f9c;
+}
+
+.twitter {
+    background-color: #00b0ed;
+}
+
+.foursquare {
+    background-color: #25b2ed;
+}

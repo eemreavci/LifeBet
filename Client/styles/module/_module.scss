@@ -1,0 +1,89 @@
+@import "../base/config";
+
+.navbar-line {
+    background-color: $color-light;
+}
+
+.navbar-user-picture {
+    @extend .bet-post-owner-picture;
+    margin-left: 0em;
+    background-image: url("https://scontent-a-ams.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/10460123_10152454325698490_6667591797438913827_n.jpg?oh=3e9aa5cf6672d1f17f09830705848c3c&oe=5474BFBF");
+    background-size: cover;
+}
+
+.top-info-bar {
+    @extend .shadowed;
+    background-color: $color-light;
+    color: $color-main;
+}
+
+.new-bet {
+    @extend .shadowed;
+    background-color: $color-light;
+    border-radius: 50%;
+}
+
+.filter-item {
+    @extend .shadowed;
+    background-color: $color-light;
+}
+
+.arrow-right {
+    width: 0;
+    height: 0;
+    border-top: 1em solid transparent;
+    border-bottom: 1em solid transparent;
+    border-left: 1em solid $color-light;
+    float: right;
+    position: relative;
+    left: .8em;
+    top: -.25em;
+}
+
+.triangle {
+    text-shadow: 3px 4px 5px $color-gray;
+    color: $color-light;
+    font-size: 5.5em;
+    float: right;
+    position: relative;
+    left: .4em;
+    top: -.565em;
+}
+
+.bet-post-main {
+    @extend .shadowed;
+    background-color: $color-light;
+}
+
+.bet-post-top-bar {
+    background-color: $color-main;
+}
+
+.bet-post-owner-picture {
+    background-image: url("https://scontent-a-ams.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/10460123_10152454325698490_6667591797438913827_n.jpg?oh=3e9aa5cf6672d1f17f09830705848c3c&oe=5474BFBF");
+    background-size: cover;
+    background-color: $color-gray;
+}
+
+.bet-post-diamond-sign {
+    color: $color-main;
+    font-size: 3em;
+    position: relative;
+    top: -.35em;
+    left: 3em;
+    display: inline-block;
+}
+
+.bet-comment {
+    @extend .shadowed;
+    background-color: $color-light;
+}
+
+.bet-comment-owner-picture {
+    @extend .bet-post-owner-picture;
+    background-image: url("https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-xap1/t1.0-9/1382139_213645602141906_1503238074_n.jpg");
+}
+
+.post-comment {
+    border-color: $color-gray;
+}
