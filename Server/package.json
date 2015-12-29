@@ -1,9 +1,12 @@
 {
-    "name": "LifeBet-Api",
-    "main": "server.js",
-    "dependencies": {
-        "express": "~4.0.0",
-        "mongoose": "~4.3.4",
-        "body-parser": "~1.0.1"
-    }
+  "name": "LifeBet-Api",
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "~1.0.1",
+    "express": "~4.0.0",
+    "jsonwebtoken": "^5.5.0",
+    "mongoose": "~4.3.4",
+    "validator": "^4.4.0"
+  }
 }
