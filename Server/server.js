@@ -10,6 +10,10 @@ var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 var bcrypt     = require('bcrypt-nodejs');
 var jwt        = require('jsonwebtoken');
+var multer     = require('multer');
+var fs         = require('fs');
+
+var uploadProfilePicture = multer({ dest: './profileImages/'});
 
 var mongoose   = require('mongoose');
 global.db = mongoose.createConnection('mongodb://admin:lifebet1551@ds037095.mongolab.com:37095/lifebetdb'); // connect to the database, global db for creating models on other js files
@@ -123,6 +127,56 @@ router.use(function(req, res, next) {
   }
 });
 
+// Upload image
+router.route('/user/profile/image')
+    .post(uploadProfilePicture.single('image'), function(req, res){
+
+        if(!req.file)
+            res.send({'success': false, 'message': 'Please choose a file'});
+        console.log(req.file);
+        
+        
+
+        User.findById(req.user._id, function(err, user) {
+            if(err)
+                res.send(err);
+            var oldImage = user.profilePicturePath;
+            
+            user.update({profilePicturePath: req.file.path}, function(err, user) {
+                if(err)
+                    res.send(err);
+                res.json({'success': true, 'message': 'Upload successfull'});
+
+                // Remove old profile picture to save server resources
+                if(oldImage) {
+                    fs.unlink(oldImage, function(err) {
+                        if(err)
+                            res.send(err);
+                    });
+                }
+            });
+        });
+    })
+
+    .get(function(req, res) {
+        User.findById(req.user._id, function(err, user) {
+            if(err)
+                res.send(err);
+            
+            res.json({'profilePicturePath': user.profilePicturePath});
+        });
+    });
+
+router.route('/user/:user_id/profile/image')
+    .get(function(req, res) {
+        User.findById(req.params.user_id, function(err, user) {
+            if(err)
+                res.send(err);
+            
+            res.json({'profilePicturePath': user.profilePicturePath});
+        });
+    });
+
 router.get('/users', function(req, res) {
     User.find({}, function(err, posts) {
         if (err)
@@ -190,7 +244,7 @@ router.route('/bets/:bet_id')
 
     // get post with id (accessed at GET http://localhost:8080/api/posts/:post_id)
     .get(function(req, res) {
-        Bet.findById(req.params.post_id, function(err, bet) {
+        Bet.findById(req.params.bet_id, function(err, bet) {
             if (err)
                 res.send(err);
             res.json(bet);
@@ -199,7 +253,7 @@ router.route('/bets/:bet_id')
 
     // update post with id (accessed at PUT http://localhost:8080/api/posts/:post_id)
     .put(function(req, res) {
-        Post.findById(req.params.post_id, function(err, bet) {
+        Post.findById(req.params.bet_id, function(err, bet) {
             if (err)
                 res.send(err);
 
@@ -218,7 +272,7 @@ router.route('/bets/:bet_id')
     // delete post with id (accessed at DELETE http://localhost:8080/api/posts/:post_id)
     .delete(function(req, res) {
         Bet.remove({
-            _id: req.params.post_id
+            _id: req.params.bet_id
         }, function(err, bet) {
             if (err)
                 res.send(err);
