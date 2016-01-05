@@ -1,0 +1,23 @@
+doctype html
+html(ng-app="app")
+  head
+    meta(charset='utf8')
+    title Life Bet | Home
+    link(rel='stylesheet', href="../styles/main.css")
+    link(rel='stylesheet', href="../bower_components/font-awesome/css/font-awesome.min.css")
+  body
+    div
+      ui-view
+
+    script(src="../bower_components/jquery/dist/jquery.min.js")
+    script(src="../bower_components/angular/angular.js")
+    script(src="../bower_components/moment/moment.js")
+    script(src="../bower_components/angular-moment/angular-moment.js")
+    script(src="../bower_components/angular-local-storage/dist/angular-local-storage.js")
+    script(src="../bower_components/angular-ui-router/release/angular-ui-router.js")
+    script(src="../scripts/responsive-type.js")
+    script(src="../scripts/util.js")
+    script(src="../src/app.module.js")
+    script(src="../src/BetController.js")
+    script(src="../src/utilDirectives.js")
+    script(src="../src/login.js")

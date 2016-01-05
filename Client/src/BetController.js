@@ -1,11 +1,12 @@
 (function() {
 	'use strict';
-	angular.module('app')
-		   .controller('BetController', BetController);
+	angular.module('controller.bet', ['LocalStorageModule'])
+		   .controller('BetController', ['$http', 'localStorageService', BetController]);
 
-	function BetController($http)	{
+	function BetController($http, localStorageService)	{
 		var vm = this;
-		$http.get("/api/bets")
+		console.log(localStorageService);
+		$http.get("/api/bets", { headers: {'x-access-token': localStorageService.get('token')} })
 			.then(function(response) {
 				vm.bets = response.data;
 			});

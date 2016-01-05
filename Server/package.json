@@ -5,6 +5,7 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.0.1",
     "express": "~4.0.0",
+    "jade": "^1.11.0",
     "jsonwebtoken": "^5.5.0",
     "mongoose": "~4.3.4",
     "multer": "^1.1.0",

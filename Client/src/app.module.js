@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	angular.module('app', ['ui.route', 'login', 'angularMoment', 'LocalStorageModule'])
+	angular.module('app', ['login', 'controller.bet', 'ui.router', 'angularMoment', 'LocalStorageModule'])
 
 	.config(['$stateProvider', '$urlRouterProvider', 'localStorageServiceProvider', function ($stateProvider, $urlRouterProvider, localStorageServiceProvider) {
 		$urlRouterProvider.otherwise('/home');
@@ -29,4 +29,6 @@
 	        }
 	    });
 	}]);
+
+
 })();
