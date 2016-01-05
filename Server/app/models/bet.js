@@ -2,7 +2,7 @@ var mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
 
 var BetSchema   = new Schema({
-    author: {type: Schema.Types.ObjectId, ref: 'Name', required: true},
+    author: {type: Schema.Types.ObjectId, ref: 'User', required: true},
     date: {type: Date, default: new Date(), required: true},
     content: {type: String, required: true},
     deadline: {type: Date, required: true},

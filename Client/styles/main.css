@@ -610,7 +610,6 @@ li.active {
 
 .navbar-user-picture {
   margin-left: 0em;
-  background-image: url("https://scontent-a-ams.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/10460123_10152454325698490_6667591797438913827_n.jpg?oh=3e9aa5cf6672d1f17f09830705848c3c&oe=5474BFBF");
   background-size: cover; }
 
 .top-info-bar {
@@ -651,7 +650,6 @@ li.active {
   background-color: #483d54; }
 
 .bet-post-owner-picture, .bet-comment-owner-picture, .navbar-user-picture {
-  background-image: url("https://scontent-a-ams.xx.fbcdn.net/hphotos-xap1/v/t1.0-9/10460123_10152454325698490_6667591797438913827_n.jpg?oh=3e9aa5cf6672d1f17f09830705848c3c&oe=5474BFBF");
   background-size: cover;
   background-color: rgba(24, 18, 18, 0.52); }
 
@@ -665,9 +663,6 @@ li.active {
 
 .bet-comment {
   background-color: #fdf1f3; }
-
-.bet-comment-owner-picture {
-  background-image: url("https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-xap1/t1.0-9/1382139_213645602141906_1503238074_n.jpg"); }
 
 .post-comment {
   border-color: rgba(24, 18, 18, 0.52); }

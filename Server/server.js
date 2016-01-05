@@ -13,7 +13,7 @@ var jwt        = require('jsonwebtoken');
 var multer     = require('multer');
 var fs         = require('fs');
 
-var uploadProfilePicture = multer({ dest: './profileImages/'});
+var uploadProfilePicture = multer({ dest: './images/profileImages/'});
 
 var mongoose   = require('mongoose');
 global.db = mongoose.createConnection('mongodb://admin:lifebet1551@ds037095.mongolab.com:37095/lifebetdb'); // connect to the database, global db for creating models on other js files
@@ -45,7 +45,8 @@ router.use(function(req, res, next) {
 
 // test route to make sure everything is working (accessed at GET http://localhost:8080/api)
 router.get('/', function(req, res) {
-    res.json({ message: 'hooray! welcome to our api! : ' + bcrypt.hashSync("Emre") });
+    console.log("Welcome");
+    // res.sendFile('../Client/src/index.html');
 });
 
 router.post('/register', function(req, res) {
@@ -127,6 +128,10 @@ router.use(function(req, res, next) {
   }
 });
 
+// Static content
+app.use(express.static('../Client'));
+app.use(express.static('images'));
+
 // Upload image
 router.route('/user/profile/image')
     .post(uploadProfilePicture.single('image'), function(req, res){
@@ -142,7 +147,7 @@ router.route('/user/profile/image')
                 res.send(err);
             var oldImage = user.profilePicturePath;
             
-            user.update({profilePicturePath: req.file.path}, function(err, user) {
+            user.update({profilePicturePath: req.file.path.replace(/\\/g, '/').replace(/^images\//, '')}, function(err, user) {
                 if(err)
                     res.send(err);
                 res.json({'success': true, 'message': 'Upload successfull'});
@@ -232,12 +237,15 @@ router.route('/bets')
     })
     // get all the posts (accessed at GET http://localhost:8080/api/posts)
     .get(function(req, res) {
-        Bet.find({}, function(err, bets) {
-            if (err)
-                res.send(err);
+        Bet.find({})
+            .populate('author')
+            .exec(function(err, bets) {
+                console.log("hey " + bets);
+                if (err)
+                    res.send(err);
 
-            res.json(bets);
-        });
+                res.json(bets);
+            });
     });
 
 router.route('/bets/:bet_id')

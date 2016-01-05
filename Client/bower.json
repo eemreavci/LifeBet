@@ -18,6 +18,13 @@
   "dependencies": {
     "angular": "~1.4.8",
     "jquery": "~2.1.4",
-    "font-awesome": "fontawesome#~4.5.0"
+    "font-awesome": "fontawesome#~4.5.0",
+    "angular-moment": "~0.10.3",
+    "moment": "~2.11.0",
+    "angular-local-storage": "~0.2.3",
+    "angular-ui-router": "~0.2.15"
+  },
+  "resolutions": {
+    "moment": ">=2.8.0 <2.11.0"
   }
 }
