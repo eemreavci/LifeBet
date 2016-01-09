@@ -13,7 +13,8 @@ var UserSchema   = new Schema({
 	location: String,
 	profilePicturePath: String,
 	bets: [{type: Schema.Types.ObjectId, ref: 'Bet'}],
-	friends: [{type: Schema.Types.ObjectId, ref: 'User'}]
+	friends: [{type: Schema.Types.ObjectId, ref: 'User'}],
+    votes: [{targetBet: {type: Schema.Types.ObjectId, ref: 'Bet'}, voteUp: Number}]
 });
 
 UserSchema.pre('save', function(next) {
@@ -38,6 +39,12 @@ UserSchema.methods.comparePassword = function(candidatePassword, cb) {
         cb(null, isMatch);
     });
 };
+
+UserSchema.methods.toJSON = function() {
+  var obj = this.toObject();
+  delete obj.password;
+  return obj;
+}
 
 
 module.exports = db.model('User', UserSchema);

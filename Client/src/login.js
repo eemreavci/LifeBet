@@ -1,28 +1,62 @@
 (function() {
 	'use strict';
-	angular.module('login', ['ui.router', 'LocalStorageModule'])
+	angular.module('authorization', ['ui.router', 'LocalStorageModule'])
 		.config(function($stateProvider) {
 			$stateProvider.state('login', {
 				url: '/login',
 				controller: 'LoginController',
 				templateUrl: 'pages/login.html',
 				loginRequired: false
-			})
+			});
+			$stateProvider.state('logout', {
+				url: '/logout',
+				controller: 'LogoutController',
+				loginRequired: true
+			});
 		})
-		.controller('LoginController', ['$http', '$state', 'localStorageService', LoginController]);
+		.service('authorizationService', ['$http', '$state', 'localStorageService', authorizationService])
+		.controller('LoginController', ['authorizationService', LoginController])
+		.controller('LogoutController', ['authorizationService', LogoutController]);
 
-	function LoginController($http, localStorageService) {
+	function authorizationService($http, $state, localStorageService) {
 		var vm = this;
-		console.log(localStorageService);
-		vm.login = function() {
-			$http.post("/api/login", {email: vm.email, password: vm.password})
+		vm.currentUser = {};
+		vm.login = function(email, password) {
+			$http.post("/api/login", {email: email, password: password})
 				.then(function(response) {
-					localStorageService.set("token", response.data.token);
-					console.log(response.data.token);
-					$state.go('home');
+					if(response.data.success) {
+						localStorageService.set("token", response.data.token);
+						localStorageService.set("user", response.data.user);
+						vm.currentUser = response.data.user;
+						console.log(response.data.user);
+						$state.go('home');
+					}
+					else {
+						alert('Wrong email/password');
+						console.log(response.data);
+					}
 				}, function(error) {
 					alert(error.data);
 				});
 		};
+		vm.logout = function() {
+			localStorageService.remove("token");
+			$state.go('login');
+		}
+		vm.getUser = function() {
+			if(_.isEmpty(vm.currentUser))
+				vm.currentUser = localStorageService.get('user');
+			return vm.currentUser;
+			
+		}
+	}
+
+	function LoginController(authorizationService) {
+		var vm = this;
+		vm.login = function() { authorizationService.login(vm.email, vm.password) };;
+	}
+
+	function LogoutController(authorizationService)	{
+		authorizationService.logout();
 	}
 })();

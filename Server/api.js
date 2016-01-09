@@ -7,6 +7,7 @@ var uploadProfilePicture = multer({ dest: './images/profileImages/'});
 var bcrypt     = require('bcrypt-nodejs');
 var jwt        = require('jsonwebtoken');
 var fs         = require('fs');
+var _ = require('underscore');
 
 
 // Get the models
@@ -60,7 +61,8 @@ router.post('/login', function(req, res) {
                     res.json({
                       success: true,
                       message: 'Login successfull',
-                      token: token
+                      token: token,
+                      user: user
                     });
                 }
                 else
@@ -142,6 +144,11 @@ router.route('/user/profile/image')
         });
     });
 
+router.route('/user')
+    .get(function(req, res) {
+        res.json({'user': req.user});
+    });
+
 router.route('/user/:user_id/profile/image')
     .get(function(req, res) {
         User.findById(req.params.user_id, function(err, user) {
@@ -208,7 +215,14 @@ router.route('/bets')
     // get all the posts (accessed at GET http://localhost:8080/api/posts)
     .get(function(req, res) {
         Bet.find({})
+        	.sort({date: 'desc'})
             .populate('author')
+            .populate({path: 'comments',
+        				populate: {
+        					path: 'author',
+        					model: 'User'
+        				}
+        			})
             .exec(function(err, bets) {
                 console.log("hey " + bets);
                 if (err)
@@ -256,6 +270,101 @@ router.route('/bets/:bet_id')
                 res.send(err);
 
             res.json({ message: 'Successfully deleted' });
+        });
+    });
+
+// Comments
+router.route('/bets/:bet_id/comments')
+	// create a post (accessed at POST http://localhost:8080/api/posts)
+    .post(function(req, res) {
+        
+        var comment = new Comment();
+        comment.author = req.user;
+        comment.bet = req.params.bet_id;
+        comment.date = new Date();
+        comment.content = req.body.content;
+
+        var userVote = _.find(req.user.votes, function(c) { return c.targetBet == req.params.bet_id; });
+        comment.voteUp = (userVote != undefined) ? userVote.voteUp : 0;
+
+        Bet.findById(req.params.bet_id, function(err, bet) {
+            if (err)
+                res.send(err);
+            bet.comments.push(comment);
+
+            bet.save(function(err) {
+                if (err)
+                    res.send(err);
+
+                console.log("New comment added to Bet");
+            });
+        });
+    	
+        // save the comment after we've found the bet
+	        comment.save(function(err) {
+	            if (err)
+	                res.send(err);
+
+	            Comment.populate(comment, {path: 'author'}, function(err, comment) {
+	            	if(err)
+	            		res.send(err);
+
+	            	res.json({ message: 'New comment posted!', comment: comment });
+	            });
+	            
+	        });
+
+        
+    })
+
+    // get comments of a bet with id
+    .get(function(req, res) {
+        Comment.find({'bet': req.params.bet_id}, function(err, comments) {
+            if (err)
+                res.send(err);
+            res.json(comments);
+        });
+    })
+
+
+router.route('/bets/:bet_id/comments/:comment_id')
+
+    // get post with id (accessed at GET http://localhost:8080/api/posts/:post_id)
+    .get(function(req, res) {
+        Comment.findById(req.params.comment_id, function(err, comment) {
+            if (err)
+                res.send(err);
+            res.json(comment);
+        });
+    })
+
+    // update post with id (accessed at PUT http://localhost:8080/api/posts/:post_id)
+    .put(function(req, res) {
+        Comment.findById(req.params.comment_id, function(err, comment) {
+            if (err)
+                res.send(err);
+
+            comment.content = req.body.content; // Update post info
+
+            comment.save(function(err) {
+                if (err)
+                    res.send(err);
+
+                res.json({ message: 'Comment updated!' });
+            });
+
+        });
+    })
+
+    // delete post with id (accessed at DELETE http://localhost:8080/api/posts/:post_id)
+    .delete(function(req, res) {
+        Comment.remove({
+            _id: req.params.comment_id
+        }, function(err, bet) {
+            if (err)
+                res.send(err);
+
+            res.json({ message: 'Comment successfully deleted' });
         });
     });
 

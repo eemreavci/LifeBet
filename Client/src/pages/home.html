@@ -1,4 +1,4 @@
-<nav>
+<nav ng-controller="NavbarController as navbarController">
 	<div class="navbar-left"></div>
 	<div class="navbar-line"></div>
 	<div class="navbar-main">
@@ -11,9 +11,9 @@
 		</ul>
 	</div>
 	<div class="navbar-user">
-		<div class="navbar-user-picture"></div>
-		<div class="navbar-user-name">Emre Avci</div>
-		<div class="navbar-logout"><i class="fa fa-lock"></i></div>
+		<div class="navbar-user-picture" back-img="{{navbarController.user.profilePicturePath}}"></div>
+		<div class="navbar-user-name">{{navbarController.user.firstName + " " + navbarController.user.lastName}}</div>
+		<a class="navbar-logout" ui-sref="logout"><i class="fa fa-lock"></i></a>
 	</div>
 </nav>
 
@@ -31,7 +31,7 @@
 		<div class="bet-post-main">
 			<div class="bet-post-top-bar">{{bet.date | date : 'medium'}}</div>
 			<div class="bet-post-info-bar">
-				<div class="bet-post-owner-picture" back-img="{{'../' + bet.author.profilePicturePath}}"></div>
+				<div class="bet-post-owner-picture" back-img="{{bet.author.profilePicturePath}}"></div>
 				<div class="bet-post-owner-name">{{bet.author.firstName + " " + bet.author.lastName}}</div>
 				<div class="bet-post-diamond-sign">&#9670;</div>
 				<div class="bet-post-diamond-count">{{bet.rating}}</div>
@@ -39,19 +39,20 @@
 				<div class="bet-post-down-vote"><i class="fa fa-arrow-circle-down fa-2x"></i></div>
 			</div>
 			<hr>
-			<div class="bet-post-content">{{bet}}</div>
+			<div class="bet-post-content">{{bet.content}}</div>
 			<div class="bet-post-footer">{{ bet.deadline | amDifference : null : 'days' }} days left</div>
 		</div>
 		<div class="bet-comments">
 			<div class="bet-comment" ng-repeat="comment in bet.comments">
 				<div class="bet-comment-owner-picture" back-img="{{comment.author.profilePicturePath}}"></div>
-				<div class="bet-comment-owner-name">{{comment.author.firstName + " " + comment.author.lastName</div>
+				<div class="bet-comment-owner-name">{{comment.author.firstName + " " + comment.author.lastName}}</div>
 				<div class="bet-comment-content">{{comment.content}}</div>
 				<!-- TODO voteUp -->
 			</div>
 		</div>
 		<div class="post-comment">
-			<input type="text" placeholder="Post a comment..."></input>
+			<input ng-model="betCtrl.commentContent" type="text" placeholder="Post a comment..."></input>
+			<button ng-click="betCtrl.postComment(bet)">Post</button>
 		</div>
 	</div>
 </div>
