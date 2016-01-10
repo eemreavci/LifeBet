@@ -3,3 +3,9 @@
 li.active {
     color: $color-secondary;
 }
+
+.search-results {
+    .navbar-search-result:hover {
+        background: darken($color-light, 20%);
+    }
+}

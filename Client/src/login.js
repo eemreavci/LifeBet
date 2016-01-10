@@ -41,13 +41,20 @@
 		};
 		vm.logout = function() {
 			localStorageService.remove("token");
+			localStorageService.remove("user");
+			vm.currentUser = {};
 			$state.go('login');
 		}
 		vm.getUser = function() {
 			if(_.isEmpty(vm.currentUser))
 				vm.currentUser = localStorageService.get('user');
-			return vm.currentUser;
-			
+			return vm.currentUser;	
+		}
+		vm.isLoggedIn = function() {
+			if(vm.getUser())
+				return true;
+			else
+				return false;
 		}
 	}
 

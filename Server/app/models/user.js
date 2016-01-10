@@ -46,5 +46,7 @@ UserSchema.methods.toJSON = function() {
   return obj;
 }
 
+UserSchema.index({firstName : 'text', lastName : 'text'});
+
 
 module.exports = db.model('User', UserSchema);

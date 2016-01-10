@@ -1,18 +1,15 @@
 (function() {
 	'use strict';
-	angular.module('controller.bet', ['LocalStorageModule'])
-		   .controller('BetController', ['$http', 'localStorageService', BetController]);
+	angular.module('controller.friends', ['LocalStorageModule'])
+		   .controller('FriendsController', ['$http', 'localStorageService', FriendsController]);
 
-	function BetController($http, localStorageService)	{
+	function FriendsController($http, localStorageService)	{
 		var vm = this;
-		vm.commentContent = [];
-		console.log(localStorageService);
 		
-		
-		vm.getBets = function() {
-			$http.get("/api/bets", { headers: {'x-access-token': localStorageService.get('token')} })
+		vm.getFriends = function() {
+			$http.get("/api/user/friends", { headers: {'x-access-token': localStorageService.get('token')} })
 				.then(function(response) {
-					vm.bets = response.data;
+					vm.friends = response.data.friends;
 				});
 		};
 
@@ -25,7 +22,7 @@
 				});
 			
 		};
-
-		vm.getBets();
+		
+		vm.getFriends();
 	}
 })();

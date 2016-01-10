@@ -4,10 +4,35 @@
     background-color: $color-light; 
 }
 
+.user-picture {
+    background-size: cover;
+    background-color: $color-gray;
+}
+
 .navbar-user-picture {
-    @extend .bet-post-owner-picture;
+    @extend .user-picture;
     margin-left: 0em;
     background-size: cover;
+}
+
+.search-box {
+    color: black;
+}
+
+.search-results {
+    .user-picture {
+        background-size: cover;
+    }
+    .user-name {
+        border-top: 1px $color-main solid;
+    }
+    .navbar-search-result:last-of-type .user-name {
+        border-bottom: 1px $color-main solid;
+    }
+    .navbar-search-result {
+        background: $color-light;
+        cursor: pointer;
+    }
 }
 
 .top-info-bar {
@@ -59,8 +84,7 @@
 }
 
 .bet-post-owner-picture {
-    background-size: cover;
-    background-color: $color-gray;
+    @extend .user-picture;
 }
 
 .bet-post-diamond-sign {
@@ -78,9 +102,19 @@
 }
 
 .bet-comment-owner-picture {
-    @extend .bet-post-owner-picture;
+    @extend .user-picture;
 }
 
 .post-comment {
     border-color: $color-gray;
+}
+
+.profile-left {
+    @extend .shadowed;
+    background: $color-light;
+}
+
+.add-friend {
+    background: $color-secondary;
+    color: $color-light;
 }

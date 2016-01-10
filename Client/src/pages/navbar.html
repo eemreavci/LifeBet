@@ -1,0 +1,26 @@
+<nav ng-controller="NavbarController as navbarController">
+	<div class="navbar-left"></div>
+	<div class="navbar-line"></div>
+	<div class="navbar-main" ng-show="navbarController.isLoggedIn()">
+		<ul>
+			<li class = "active"><a ui-sref="home">Home</a></li>
+			<li> | </li>
+			<li><a>My Bets</a></li>
+			<li> | </li>
+			<li><a ui-sref="friends">Friends</a></li>
+			<li> | </li>
+			<li><input class="search-box" ng-model="navbarController.searchText" ng-change="navbarController.search()" type="text" placeholder="Search people.."/></li>
+		</ul>
+	</div>
+	<div class="search-results">
+		<div class="navbar-search-result" ng-repeat="user in navbarController.searchResults" ng-show="navbarController.searchText.length > 0" ui-sref="profile({user_id: user._id})">
+			<div class="user-picture" back-img="{{user.profilePicturePath}}"></div>
+			<div class="user-name">{{user.firstName + " " + user.lastName}}</div>
+		</div>
+	</div>
+	<div class="navbar-user" ng-show="navbarController.isLoggedIn()">
+		<div class="navbar-user-picture" back-img="{{navbarController.user.profilePicturePath}}"></div>
+		<div class="navbar-user-name">{{navbarController.user.firstName + " " + navbarController.user.lastName}}</div>
+		<a class="navbar-logout" ui-sref="logout"><i class="fa fa-lock"></i></a>
+	</div>
+</nav>

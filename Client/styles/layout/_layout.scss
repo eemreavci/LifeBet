@@ -46,11 +46,46 @@
     left: 1.8em;
 }
 
+.user-picture {
+    height: 4em;
+    width: 4em;
+    border-radius: 50%;
+    margin-top: 1em;
+    margin-left: 1em;
+    display: inline-block;
+}
+
+.search-box {
+    padding-left: 0.5em;
+}
+
+.search-results {
+    position: absolute;
+    left: 33.58em;
+    top: 3.15em;
+    width: 12.07em;
+
+    .user-picture {
+        float: left;
+    }
+    .user-name {
+        padding-top: 1em;
+        line-height: 4em;
+        padding-left: 5.5em;
+        padding-bottom: 1em;
+    }
+    li.navbar-search-result {
+        display: block;
+    }
+}
+
 .top-info-bar {
     height: $nav-height / 2;
+    line-height: $nav-height / 2;
     width: 95%;
     margin-top: 10em;
-    padding-top: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
     padding-left: 5%;
     display: inline-block;
 }
@@ -121,15 +156,6 @@
     padding: .5em;
 }
 
-.bet-post-owner-picture {
-    height: 4em;
-    width: 4em;
-    border-radius: 50%;
-    margin-top: 1em;
-    margin-left: 1em;
-    display: inline-block;
-}
-
 .bet-post-owner-name {
     display: inline-block;
     position: relative;
@@ -196,4 +222,42 @@
         width: 99.6%;
         font-size: .7em;
     }
+}
+
+.profile-left {
+    width: 10em;
+    margin-left: 1em;
+    margin-top: 1em;
+    height: 20em;
+    padding: 2em;
+    float: left;
+
+    .profile-image {
+        width: 10em;
+        height: 10em;
+    }
+    .profile-info  {
+        width: 70%;
+        margin-top: 1em;
+        float: left;
+    }
+    i.fa {
+        width: 30%;
+        margin-top: 1em;
+        float: left;
+
+    }
+}
+
+.profile-right {
+    width: 77%;
+    margin-left: 2em;
+    float: left;
+    margin-top: 1em;
+}
+
+.add-friend {
+    width: 7em;
+    padding: 0.7em;
+    display: inline;
 }

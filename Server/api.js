@@ -144,6 +144,8 @@ router.route('/user/profile/image')
         });
     });
 
+// User routes
+
 router.route('/user')
     .get(function(req, res) {
         res.json({'user': req.user});
@@ -168,6 +170,62 @@ router.get('/users', function(req, res) {
     });
 });
 
+router.route('/users/:user_id')
+    .get(function(req, res) {
+        User.findById(req.params.user_id, function(err, user) {
+            if(err)
+                res.send(err);
+            
+            res.json({'user': user});
+        });
+    });
+
+router.post('/users/search', function(req, res) {
+	var rexp = new RegExp(req.body.searchText, "i");
+	User.find()
+		.or([{ 'firstName': { $regex: rexp }}, { 'lastName': { $regex: rexp }}])
+		.sort('firstName')
+		.limit(20)
+		.exec(function(err, users) {
+		    res.json({'result': users});
+		});
+
+});
+
+// Friends routes
+router.route('/user/friends')
+	.post(function(req, res) {
+        
+		User.findById(req.user._id, function(err, user) {
+            if(err)
+                res.send(err);
+            
+            user.friends.push(req.body.friend);
+        
+	        user.save(function(err) {
+	            if (err)
+	                res.send(err);
+
+	            res.json({ message: 'New friend added!' });
+	        });
+        });
+
+        
+
+        
+    })
+    .get(function(req, res) {
+    	User.findById(req.user._id)
+    		.populate('friends')
+    		.exec(function(err, user) {
+	            if(err)
+	        		res.send(err);
+
+	        	res.json({'friends': user.friends});
+	        });
+        
+    });
+
 router.route('/user/bets')
 
     .get(function(req, res) {
@@ -177,6 +235,26 @@ router.route('/user/bets')
 
             res.json(bets);
         });
+    });
+
+router.route('/users/:user_id/bets')
+
+    .get(function(req, res) {
+         Bet.find({author: req.params.user_id})
+         	.sort({date: 'desc'})
+            .populate('author')
+            .populate({path: 'comments',
+        				populate: {
+        					path: 'author',
+        					model: 'User'
+        				}
+        			})
+            .exec(function(err, bets) {
+                if (err)
+                    res.send(err);
+
+                res.json(bets);
+            });
     });
 
 // Routes for Bets
@@ -224,7 +302,6 @@ router.route('/bets')
         				}
         			})
             .exec(function(err, bets) {
-                console.log("hey " + bets);
                 if (err)
                     res.send(err);
 

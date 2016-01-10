@@ -335,7 +335,7 @@ td,
 th {
   padding: 0; }
 
-.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment {
+.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment, .profile-left {
   -webkit-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   -moz-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52); }
@@ -344,7 +344,8 @@ body {
   font-family: Roboto;
   font-size: 100%;
   background: url("../images/background.png") no-repeat;
-  background-size: cover; }
+  background-size: cover;
+  background-attachment: fixed; }
 
 nav {
   position: fixed;
@@ -375,7 +376,7 @@ nav {
 .navbar-main li {
   color: #fdf1f3; }
 
-.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment {
+.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment, .profile-left {
   -webkit-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   -moz-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52); }
@@ -390,7 +391,7 @@ nav {
   text-align: center; }
 
 .navbar-main {
-  text-align: center;
+  text-align: left;
   font-weight: 500; }
 
 .navbar-user {
@@ -420,7 +421,7 @@ nav {
 .bet-comment-content {
   font-size: .9em; }
 
-.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment {
+.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment, .profile-left {
   -webkit-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   -moz-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52); }
@@ -463,11 +464,39 @@ nav {
   top: -14em;
   left: 1.8em; }
 
+.user-picture, .navbar-user-picture, .bet-post-owner-picture, .bet-comment-owner-picture {
+  height: 4em;
+  width: 4em;
+  border-radius: 50%;
+  margin-top: 1em;
+  margin-left: 1em;
+  display: inline-block; }
+
+.search-box {
+  padding-left: 0.5em; }
+
+.search-results {
+  position: absolute;
+  left: 33.58em;
+  top: 3.15em;
+  width: 12.07em; }
+  .search-results .user-picture, .search-results .navbar-user-picture, .search-results .bet-post-owner-picture, .search-results .bet-comment-owner-picture {
+    float: left; }
+  .search-results .user-name {
+    padding-top: 1em;
+    line-height: 4em;
+    padding-left: 5.5em;
+    padding-bottom: 1em; }
+  .search-results li.navbar-search-result {
+    display: block; }
+
 .top-info-bar {
   height: 2.5em;
+  line-height: 2.5em;
   width: 95%;
   margin-top: 10em;
-  padding-top: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
   padding-left: 5%;
   display: inline-block; }
 
@@ -527,14 +556,6 @@ nav {
   float: right;
   padding: .5em; }
 
-.bet-post-owner-picture, .bet-comment-owner-picture, .navbar-user-picture {
-  height: 4em;
-  width: 4em;
-  border-radius: 50%;
-  margin-top: 1em;
-  margin-left: 1em;
-  display: inline-block; }
-
 .bet-post-owner-name, .bet-comment-owner-name {
   display: inline-block;
   position: relative;
@@ -592,7 +613,37 @@ nav {
     width: 99.6%;
     font-size: .7em; }
 
-.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment {
+.profile-left {
+  width: 10em;
+  margin-left: 1em;
+  margin-top: 1em;
+  height: 20em;
+  padding: 2em;
+  float: left; }
+  .profile-left .profile-image {
+    width: 10em;
+    height: 10em; }
+  .profile-left .profile-info {
+    width: 70%;
+    margin-top: 1em;
+    float: left; }
+  .profile-left i.fa {
+    width: 30%;
+    margin-top: 1em;
+    float: left; }
+
+.profile-right {
+  width: 77%;
+  margin-left: 2em;
+  float: left;
+  margin-top: 1em; }
+
+.add-friend {
+  width: 7em;
+  padding: 0.7em;
+  display: inline; }
+
+.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment, .profile-left {
   -webkit-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   -moz-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52); }
@@ -600,7 +651,10 @@ nav {
 li.active {
   color: #c83a5d; }
 
-.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment {
+.search-results .navbar-search-result:hover {
+  background: #f098a7; }
+
+.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment, .profile-left {
   -webkit-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   -moz-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52); }
@@ -608,9 +662,26 @@ li.active {
 .navbar-line {
   background-color: #fdf1f3; }
 
+.user-picture, .navbar-user-picture, .bet-post-owner-picture, .bet-comment-owner-picture {
+  background-size: cover;
+  background-color: rgba(24, 18, 18, 0.52); }
+
 .navbar-user-picture {
   margin-left: 0em;
   background-size: cover; }
+
+.search-box {
+  color: black; }
+
+.search-results .user-picture, .search-results .navbar-user-picture, .search-results .bet-post-owner-picture, .search-results .bet-comment-owner-picture {
+  background-size: cover; }
+.search-results .user-name {
+  border-top: 1px #483d54 solid; }
+.search-results .navbar-search-result:last-of-type .user-name {
+  border-bottom: 1px #483d54 solid; }
+.search-results .navbar-search-result {
+  background: #fdf1f3;
+  cursor: pointer; }
 
 .top-info-bar {
   background-color: #fdf1f3;
@@ -649,10 +720,6 @@ li.active {
 .bet-post-top-bar {
   background-color: #483d54; }
 
-.bet-post-owner-picture, .bet-comment-owner-picture, .navbar-user-picture {
-  background-size: cover;
-  background-color: rgba(24, 18, 18, 0.52); }
-
 .bet-post-diamond-sign {
   color: #483d54;
   font-size: 3em;
@@ -667,7 +734,14 @@ li.active {
 .post-comment {
   border-color: rgba(24, 18, 18, 0.52); }
 
-.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment {
+.profile-left {
+  background: #fdf1f3; }
+
+.add-friend {
+  background: #c83a5d;
+  color: #fdf1f3; }
+
+.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment, .profile-left {
   -webkit-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   -moz-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52); }

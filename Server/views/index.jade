@@ -7,6 +7,7 @@ html(ng-app="app")
     link(rel='stylesheet', href="../bower_components/font-awesome/css/font-awesome.min.css")
   body
     div
+      include ../../Client/src/pages/navbar.html
       ui-view
 
     script(src="../bower_components/jquery/dist/jquery.min.js")
@@ -20,6 +21,8 @@ html(ng-app="app")
     script(src="../scripts/util.js")
     script(src="../src/app.module.js")
     script(src="../src/BetController.js")
+    script(src="../src/FriendsController.js")
+    script(src="../src/ProfileController.js")
     script(src="../src/utilDirectives.js")
     script(src="../src/login.js")
     script(src="../src/navbar.js")

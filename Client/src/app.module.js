@@ -1,7 +1,7 @@
 (function() {
 	'use strict';
 
-	angular.module('app', ['authorization', 'navbar', 'controller.bet', 'ui.router', 'angularMoment', 'LocalStorageModule'])
+	angular.module('app', ['authorization', 'navbar', 'controller.bet', 'controller.friends', 'controller.profile', 'ui.router', 'angularMoment', 'LocalStorageModule'])
 
 	.config(['$stateProvider', '$urlRouterProvider', 'localStorageServiceProvider', function ($stateProvider, $urlRouterProvider, localStorageServiceProvider) {
 		$urlRouterProvider.otherwise('/home');
@@ -11,6 +11,16 @@
 			.state('home', {
 				url 		  : '/home',
 				templateUrl   : 'pages/home.html',
+				loginRequired : true
+			})
+			.state('friends', {
+				url 		  : '/friends',
+				templateUrl   : 'pages/friends.html',
+				loginRequired : true
+			})
+			.state('profile', {
+				url 		  : '/profile/:user_id',
+				templateUrl   : 'pages/profile.html',
 				loginRequired : true
 			});
 

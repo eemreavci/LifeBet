@@ -1,0 +1,43 @@
+<div>
+
+	<div class="top-info-bar">
+		You can find your friend list here! Use the buttons to find new friends or import from other social media websites.
+	</div>
+	<div class="top-find-friend">
+		<div class="new-bet find-friend search"><i class="fa fa-search"></i></div>
+		<div class="new-bet find-friend facebook"><i class="fa fa-facebook"></i></div>
+		<div class="new-bet find-friend twitter"><i class="fa fa-twitter"></i></div>
+		<div class="new-bet find-friend foursquare"><i class="fa fa-foursquare"></i></div>
+	</div>
+	<div class="left-filter">
+		<div class="filter-item">All Friends<span class="triangle">&#9654;</span></div>
+		<div class="filter-item">Facebook Friends</div>
+		<div class="filter-item">Twitter Friends</div>
+		<div class="filter-item">Foursquare Friends</div>
+	</div>
+	<div class="main-content" ng-controller="FriendsController as friendsController">
+		<div class="bet-post">
+			<div class="bet-post-main">
+				<div class="bet-post-top-bar"></div>
+				<div class="bet-post-content">
+					<div ng-repeat="friend in friendsController.friends">
+						<div class="bet-comment-owner-picture" back-img="{{friend.profilePicturePath}}"></div>
+						<div class="bet-comment-owner-name">{{friend.firstName + " " + friend.lastName}}</div>
+					</div>
+					<div ng-show="friendsController.friends.length == 0">
+						You don't have any friends yet :(
+					</div>
+					<div class="top-find-friend">
+						<div class="new-bet find-friend search"><i class="fa fa-search"></i></div>
+						<div class="new-bet find-friend facebook"><i class="fa fa-facebook"></i></div>
+						<div class="new-bet find-friend twitter"><i class="fa fa-twitter"></i></div>
+						<div class="new-bet find-friend foursquare"><i class="fa fa-foursquare"></i></div>
+					</div>
+				</div>
+				<div class="bet-post-footer">Total 72 friends.</div>
+			</div>
+			
+		</div>
+	</div>
+
+</div>
