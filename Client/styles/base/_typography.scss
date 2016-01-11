@@ -8,6 +8,7 @@
 .new-bet {
     font-weight: 400;
     font-size: 2.5em;
+    line-height: 1.5em;
     text-align: center;
 }
 
@@ -48,4 +49,44 @@
 
 .bet-comment-content {
     font-size: .9em;
+}
+
+.new-bet-top-bar {
+    font-size: 1em;
+    text-align: left;
+}
+.add-friend {
+    color: $color-light;
+}
+.bet-post-button {
+    text-align: center;
+    color: $color-light;
+}
+
+.login-container {
+    h2 {
+        text-align: center;
+        color: $color-secondary;
+    }
+    .login-input {
+        label {
+            color: $color-main;
+            font-weight: bold;
+        }
+    }
+    .login-button {
+        color: $color-light;
+        line-height: 2em;
+    }
+}
+.form-label {
+    color: $color-main;
+    font-weight: bold;
+}
+.upload-button {
+    color: $color-light;
+    line-height: 100%;
+    i.fa {
+        line-height: 100%;
+    }
 }

@@ -1,4 +1,3 @@
-// https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4
 // https://mongolab.com/databases/lifebetdb
 
 // BASE SETUP
@@ -16,7 +15,7 @@ var mongoose   = require('mongoose');
 global.db = mongoose.createConnection('mongodb://admin:lifebet1551@ds037095.mongolab.com:37095/lifebetdb'); // connect to the database, global db for creating models on other js files
 
 // configure app to use bodyParser() to get the data from POST
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true }));
 app.use(bodyParser.json());
 
 // configure app for jade templates

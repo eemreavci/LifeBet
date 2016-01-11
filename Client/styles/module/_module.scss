@@ -116,5 +116,24 @@
 
 .add-friend {
     background: $color-secondary;
-    color: $color-light;
+}
+.bet-post-button {
+    background: $color-secondary;
+}
+
+.login-container {
+    @extend .shadowed;
+    background: $color-light;
+    .login-button {
+        background: $color-secondary;
+        border: none;
+    }
+    .register-button {
+        @extend .login-button;
+        background: $color-main;
+    }
+}
+
+.upload-button {
+    background: $color-main;
 }

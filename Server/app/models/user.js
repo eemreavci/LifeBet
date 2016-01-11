@@ -11,7 +11,7 @@ var UserSchema   = new Schema({
 	joinDate: {type: Date, required: true},
 	birthDate: {type: Date, required: true},
 	location: String,
-	profilePicturePath: String,
+	profilePicturePath: {type: String, default: 'defaultUser.png'},
 	bets: [{type: Schema.Types.ObjectId, ref: 'Bet'}],
 	friends: [{type: Schema.Types.ObjectId, ref: 'User'}],
     votes: [{targetBet: {type: Schema.Types.ObjectId, ref: 'Bet'}, voteUp: Number}]

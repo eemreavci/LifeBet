@@ -1,7 +1,13 @@
-<div ng-controller="LoginController as loginController" style="position: relative; top: 10em;">
-Email
-<input ng-model="loginController.email" type="email"/>
-Password
-<input ng-model="loginController.password" type="password"/>
-<button ng-click="loginController.login()">Login</button>
+<div class="login-container" ng-controller="LoginController as loginController">
+	<h2>Login</h2>
+	<div class="login-input">
+		<label for="email">Email</label><br>
+		<input id="email" ng-model="loginController.email" type="email"/>
+	</div>
+	<div class="login-input">
+		<label for="password">Password</label><br>
+		<input id="password" ng-model="loginController.password" type="password"/>
+	</div>
+	<button class="login-button" ng-click="loginController.login()">Login</button>
+	<button class="register-button" ui-sref="register">Create Account</button>
 </div>

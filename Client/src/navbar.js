@@ -1,11 +1,16 @@
 (function() {
 	'use strict';
 	angular.module('navbar', ['authorization', 'LocalStorageModule'])
-		.controller('NavbarController', ['$http', 'localStorageService', 'authorizationService', NavbarController]);
+		.controller('NavbarController', ['$rootScope', '$state', '$http', 'localStorageService', 'authorizationService', NavbarController]);
 
-	function NavbarController($http, localStorageService, authorizationService) {
+	function NavbarController($rootScope, $state, $http, localStorageService, authorizationService) {
 		var vm = this;
 		vm.user = authorizationService.getUser();
+
+		$rootScope.$on("$stateChangeSuccess", function(event, toState, toParams, fromState, fromParams) {
+	        if(fromState.name == "login" || toState.name == "logout")
+	        	vm.user = authorizationService.getUser();
+	    });       
 
 		vm.isLoggedIn = function() { return authorizationService.isLoggedIn() };
 

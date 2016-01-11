@@ -88,6 +88,7 @@ router.use(function(req, res, next) {
       } else {
         // if everything is good, save to request for use in other routes
         req.user = decoded;    
+
         next();
       }
     });
@@ -107,7 +108,7 @@ router.use(function(req, res, next) {
 // Upload image
 router.route('/user/profile/image')
     .post(uploadProfilePicture.single('image'), function(req, res){
-
+    	console.log("New image");
         if(!req.file)
             res.send({'success': false, 'message': 'Please choose a file'});
         console.log(req.file);
@@ -122,7 +123,7 @@ router.route('/user/profile/image')
             user.update({profilePicturePath: req.file.path.replace(/\\/g, '/').replace(/^images\//, '')}, function(err, user) {
                 if(err)
                     res.send(err);
-                res.json({'success': true, 'message': 'Upload successfull'});
+                res.json({'success': true, 'message': 'Upload successfull', 'profilePicturePath': user.profilePicturePath});
 
                 // Remove old profile picture to save server resources
                 if(oldImage) {
@@ -195,7 +196,6 @@ router.post('/users/search', function(req, res) {
 // Friends routes
 router.route('/user/friends')
 	.post(function(req, res) {
-        
 		User.findById(req.user._id, function(err, user) {
             if(err)
                 res.send(err);
@@ -209,10 +209,6 @@ router.route('/user/friends')
 	            res.json({ message: 'New friend added!' });
 	        });
         });
-
-        
-
-        
     })
     .get(function(req, res) {
     	User.findById(req.user._id)
@@ -224,6 +220,23 @@ router.route('/user/friends')
 	        	res.json({'friends': user.friends});
 	        });
         
+    });
+
+router.route('/user/friends/:friend_id')
+	.delete(function(req, res) {
+        User.findById(req.user._id, function(err, user) {
+            if(err)
+                res.send(err);
+            
+            user.friends.pull(req.params.friend_id);
+
+	        user.save(function(err) {
+	            if (err)
+	                res.send(err);
+
+	            res.json({ message: 'Friend removed!' });
+	        });
+        });
     });
 
 router.route('/user/bets')
@@ -271,15 +284,6 @@ router.route('/bets')
         bet.rating = 0;
         bet.status = 'Active';
 
-
-        // author: {type: Schema.Types.ObjectId, ref: 'Name', required: true},
-        // date: {type: Date, default: new Date(), required: true},
-        // content: {type: String, required: true},
-        // deadline: {type: Date, required: true},
-        // rating: {type: Number, default: 0},
-        // comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
-        // status: {type: String, enum: ['Active', 'Completed', 'Failed']}
-
         // save the post and check for errors
         bet.save(function(err) {
             if (err)
@@ -292,21 +296,23 @@ router.route('/bets')
     })
     // get all the posts (accessed at GET http://localhost:8080/api/posts)
     .get(function(req, res) {
-        Bet.find({})
-        	.sort({date: 'desc'})
-            .populate('author')
-            .populate({path: 'comments',
-        				populate: {
-        					path: 'author',
-        					model: 'User'
-        				}
-        			})
-            .exec(function(err, bets) {
-                if (err)
-                    res.send(err);
+    	User.findById(req.user._id, function(err, user) {
+	        Bet.find({$or: [{author: {$in: user.friends}}, {author: req.user._id}]})
+	        	.sort({date: 'desc'})
+	            .populate('author')
+	            .populate({path: 'comments',
+	        				populate: {
+	        					path: 'author',
+	        					model: 'User'
+	        				}
+	        			})
+	            .exec(function(err, bets) {
+	                if (err)
+	                    res.send(err);
 
-                res.json(bets);
-            });
+	                res.json(bets);
+	            });
+	    });
     });
 
 router.route('/bets/:bet_id')

@@ -149,6 +149,7 @@
     padding-top: .5em;
     padding-bottom: 1em;
     padding-left: 1em;
+    padding-right: 1em;
 }
 
 .bet-post-footer {
@@ -260,4 +261,51 @@
     width: 7em;
     padding: 0.7em;
     display: inline;
+}
+
+.new-bet-form {
+    .bet-post-main {
+        margin-bottom: 1em;
+    }
+    input.new-bet-content {
+        width: 100%;
+    }
+    .new-bet-top-bar {
+        padding-left: 1em;
+    }
+    .bet-post-button {
+        width: 5em;
+        padding: 0.5em;
+        float: right;
+    }
+}
+
+.login-container {
+    width: 50%;
+    height: 18em;
+    margin: 0 auto;
+    position: relative;
+    top: 7em;
+    .login-input {
+        width: 50%;
+        height: 5em;
+        margin: 0 auto;
+        input {
+            width: 100%;
+        }
+    }
+    .login-button {    
+        margin: 0 auto;
+        display: block;
+        width: 50%;
+        height: 2em;
+        padding-bottom: 1em;
+    }
+}
+
+.upload-button {
+    padding: 0.5em;
+    i.fa {
+        margin-top: 0.5em;
+    }
 }

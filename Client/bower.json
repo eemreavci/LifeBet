@@ -23,7 +23,8 @@
     "moment": "~2.11.0",
     "angular-local-storage": "~0.2.3",
     "angular-ui-router": "~0.2.15",
-    "underscore": "~1.8.3"
+    "underscore": "~1.8.3",
+    "ng-file-upload": "~11.0.2"
   },
   "resolutions": {
     "moment": ">=2.8.0 <2.11.0"

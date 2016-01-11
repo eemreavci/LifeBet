@@ -335,7 +335,7 @@ td,
 th {
   padding: 0; }
 
-.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment, .profile-left {
+.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment, .profile-left, .login-container {
   -webkit-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   -moz-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52); }
@@ -376,7 +376,10 @@ nav {
 .navbar-main li {
   color: #fdf1f3; }
 
-.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment, .profile-left {
+.clickable {
+  cursor: pointer; }
+
+.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment, .profile-left, .login-container {
   -webkit-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   -moz-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52); }
@@ -388,6 +391,7 @@ nav {
 .new-bet {
   font-weight: 400;
   font-size: 2.5em;
+  line-height: 1.5em;
   text-align: center; }
 
 .navbar-main {
@@ -421,7 +425,38 @@ nav {
 .bet-comment-content {
   font-size: .9em; }
 
-.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment, .profile-left {
+.new-bet-top-bar {
+  font-size: 1em;
+  text-align: left; }
+
+.add-friend {
+  color: #fdf1f3; }
+
+.bet-post-button {
+  text-align: center;
+  color: #fdf1f3; }
+
+.login-container h2 {
+  text-align: center;
+  color: #c83a5d; }
+.login-container .login-input label {
+  color: #483d54;
+  font-weight: bold; }
+.login-container .login-button, .login-container .register-button {
+  color: #fdf1f3;
+  line-height: 2em; }
+
+.form-label {
+  color: #483d54;
+  font-weight: bold; }
+
+.upload-button {
+  color: #fdf1f3;
+  line-height: 100%; }
+  .upload-button i.fa {
+    line-height: 100%; }
+
+.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment, .profile-left, .login-container {
   -webkit-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   -moz-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52); }
@@ -550,7 +585,8 @@ nav {
   height: auto;
   padding-top: .5em;
   padding-bottom: 1em;
-  padding-left: 1em; }
+  padding-left: 1em;
+  padding-right: 1em; }
 
 .bet-post-footer {
   float: right;
@@ -643,7 +679,42 @@ nav {
   padding: 0.7em;
   display: inline; }
 
-.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment, .profile-left {
+.new-bet-form .bet-post-main {
+  margin-bottom: 1em; }
+.new-bet-form input.new-bet-content {
+  width: 100%; }
+.new-bet-form .new-bet-top-bar {
+  padding-left: 1em; }
+.new-bet-form .bet-post-button {
+  width: 5em;
+  padding: 0.5em;
+  float: right; }
+
+.login-container {
+  width: 50%;
+  height: 18em;
+  margin: 0 auto;
+  position: relative;
+  top: 7em; }
+  .login-container .login-input {
+    width: 50%;
+    height: 5em;
+    margin: 0 auto; }
+    .login-container .login-input input {
+      width: 100%; }
+  .login-container .login-button, .login-container .register-button {
+    margin: 0 auto;
+    display: block;
+    width: 50%;
+    height: 2em;
+    padding-bottom: 1em; }
+
+.upload-button {
+  padding: 0.5em; }
+  .upload-button i.fa {
+    margin-top: 0.5em; }
+
+.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment, .profile-left, .login-container {
   -webkit-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   -moz-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52); }
@@ -654,7 +725,7 @@ li.active {
 .search-results .navbar-search-result:hover {
   background: #f098a7; }
 
-.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment, .profile-left {
+.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment, .profile-left, .login-container {
   -webkit-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   -moz-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52); }
@@ -738,10 +809,23 @@ li.active {
   background: #fdf1f3; }
 
 .add-friend {
-  background: #c83a5d;
-  color: #fdf1f3; }
+  background: #c83a5d; }
 
-.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment, .profile-left {
+.bet-post-button {
+  background: #c83a5d; }
+
+.login-container {
+  background: #fdf1f3; }
+  .login-container .login-button, .login-container .register-button {
+    background: #c83a5d;
+    border: none; }
+  .login-container .register-button {
+    background: #483d54; }
+
+.upload-button {
+  background: #483d54; }
+
+.shadowed, nav, .top-info-bar, .new-bet, .filter-item, .bet-post-main, .bet-comment, .profile-left, .login-container {
   -webkit-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   -moz-box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52);
   box-shadow: 3px 4px 5px rgba(24, 18, 18, 0.52); }

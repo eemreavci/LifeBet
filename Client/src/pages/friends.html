@@ -20,7 +20,7 @@
 			<div class="bet-post-main">
 				<div class="bet-post-top-bar"></div>
 				<div class="bet-post-content">
-					<div ng-repeat="friend in friendsController.friends">
+					<div ng-repeat="friend in friendsController.friends" ui-sref="profile({user_id: friend._id})" class="clickable">
 						<div class="bet-comment-owner-picture" back-img="{{friend.profilePicturePath}}"></div>
 						<div class="bet-comment-owner-name">{{friend.firstName + " " + friend.lastName}}</div>
 					</div>

@@ -1,13 +1,16 @@
 <div ng-controller="ProfileController as profileController">
 	
 	<div class="top-info-bar">
-		<div ng-click="profileController.addFriend()" ng-hide="profileController.isFriend" class="add-friend"><i class="fa fa-user-plus"></i> Add Friend</div>
-		{{vm.currentUser._id}}
-		{{vm.user._id}}
+		<div ng-click="profileController.addFriend()" ng-hide="profileController.isFriend" class="add-friend clickable"><i class="fa fa-user-plus"></i> Add Friend</div>
+		<div ng-click="profileController.removeFriend()" ng-show="profileController.isFriend && !profileController.isCurrentUser" class="add-friend clickable"><i class="fa fa-user-times"></i> Remove Friend</div>
 	</div>
 
 	<div class="profile-left">
 		<div class="profile-image" back-img="{{profileController.user.profilePicturePath}}"></div>
+
+		<div ng-show="profileController.isCurrentUser">
+			<div class="upload-button clickable" ngf-select="profileController.upload($file)"><i class="fa fa-upload"></i> Upload Picture</div>
+		</div>
 		
 		<i class="fa fa-user"></i>
 		<div class="profile-info profile-name">{{profileController.user.firstName + " " + profileController.user.lastName}}</div>
@@ -44,9 +47,17 @@
 						<!-- TODO voteUp -->
 					</div>
 				</div>
-				<div class="post-comment">
+				<div class="post-comment" ng-controller="BetController as betCtrl">
 					<input ng-model="betCtrl.commentContent[bet._id]" type="text" placeholder="Post a comment..."></input>
 					<button ng-click="betCtrl.postComment(bet)">Post</button>
+				</div>
+			</div>
+			<div class="bet-post" ng-show="profileController.userBets.length == 0">
+				<div class="bet-post-main">
+					<div class="bet-post-top-bar"></div>
+					<div class="bet-post-content">
+						Unfortunately {{profileController.user.firstName}} does not have any bets yet. Check back later!
+					</div>
 				</div>
 			</div>
 		</div>

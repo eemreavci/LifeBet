@@ -26,6 +26,17 @@
 			
 		};
 
+		vm.postBet = function() {
+			$http.post("/api/bets", {'content': vm.betContent, 'deadline': vm.betDeadline}, { headers: {'x-access-token': localStorageService.get('token')} })
+				.then(function(response) {
+					console.log(response);
+					vm.betContent = "";
+					vm.betDeadline = "";
+					vm.getBets();
+				});
+			
+		};
+
 		vm.getBets();
 	}
 })();

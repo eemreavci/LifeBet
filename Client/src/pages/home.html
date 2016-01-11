@@ -2,18 +2,34 @@
 	Welcome back! Nice to see you Emre! Check out the new bets by your friends below.
 </div>
 <div class="new-bet">+</div>
+
+
 <div class="left-filter">
 	<div class="filter-item">Most Popular<span class="triangle">&#9654;</span></div>
 	<div class="filter-item">Recently Posted</div>
 	<div class="filter-item">Ending Soon</div>
 </div>
 <div class="main-content" ng-controller="BetController as betCtrl">
+	<div class="bet-post new-bet-form">
+		<div class="bet-post-main">
+			<div class="bet-post-top-bar new-bet-top-bar">New Bet</div>
+			<div class="bet-post-content">
+				<input class="new-bet-content" ng-model="betCtrl.betContent" type="textarea" placeholder="I bet that.."/>
+				<br>
+				<br>
+				<label class="form-label" for="bet-deadline">Deadline:</label>
+				<input id="bet-deadline" ng-model="betCtrl.betDeadline" type="date"/>
+				<div class="bet-post-button" ng-click="betCtrl.postBet()">Post</div>
+			</div>
+		</div>
+	</div>
+	<br>
 	<div class="bet-post" ng-repeat="bet in betCtrl.bets">
 		<div class="bet-post-main">
 			<div class="bet-post-top-bar">{{bet.date | date : 'medium'}}</div>
 			<div class="bet-post-info-bar">
-				<div class="bet-post-owner-picture" back-img="{{bet.author.profilePicturePath}}"></div>
-				<div class="bet-post-owner-name">{{bet.author.firstName + " " + bet.author.lastName}}</div>
+				<div ui-sref="profile({user_id: bet.author._id})" class="bet-post-owner-picture clickable" back-img="{{bet.author.profilePicturePath}}"></div>
+				<div ui-sref="profile({user_id: bet.author._id})" class="bet-post-owner-name clickable">{{bet.author.firstName + " " + bet.author.lastName}}</div>
 				<div class="bet-post-diamond-sign">&#9670;</div>
 				<div class="bet-post-diamond-count">{{bet.rating}}</div>
 				<div class="bet-post-up-vote"><i class="fa fa-arrow-circle-up fa-2x"></i></div>
